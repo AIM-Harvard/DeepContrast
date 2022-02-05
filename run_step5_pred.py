@@ -22,17 +22,17 @@ if __name__ == '__main__':
     Download models and sample data from Google Drive with the link:
     https://drive.google.com/drive/folders/14U0pAeKXEYpQ4oD6z5NH_1BuzbGsA5vA
     Put the models and sample data in respective folders, i.e. model_dir, data_dir.
-
     Args:
         proj_dir {path} -- main folder to store models, data and outputs;
         body_part {str} -- choose either 'HeadNeck' or 'Chest' to run prediction;
-
     Return:
         Dataframe on contrast predicions on image and scan levels;
     
-    """
+    """    
+    
 
     body_part = 'Chest'
+    
     proj_dir = '/path/to/my/folder'
     model_dir = os.path.join(proj_dir, 'model')
     data_dir = os.path.join(proj_dir, 'data')
