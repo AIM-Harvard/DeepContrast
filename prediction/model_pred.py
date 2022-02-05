@@ -22,17 +22,17 @@ from sklearn.metrics import confusion_matrix
 
 
 
-def model_pred(body_part, df_img, img_arr, out_dir, thr_img=0.5, thr_pat=0.5):    
+def model_pred(body_part, model_dir, out_dir, df_img, img_arr, thr_img=0.5, thr_pat=0.5):    
 
     """
     model prediction for IV contrast
 
     Arguments:
+        body_part {str} -- 'HeadNeck' or 'Chest'
         df_img {pd.df} -- dataframe with scan and axial slice ID.
         img_arr {np.array} -- numpy array stacked with axial image slices.
         model_dir {str} -- directory for saved model.
-        saved_model {str} -- saved model name.
-        pred_dir {str} -- directory for results output.
+        out_dir {str} -- directory for results output.
 
     Keyword arguments:
         thr_img {float} -- threshold to determine prediction class on image level.
@@ -42,18 +42,14 @@ def model_pred(body_part, df_img, img_arr, out_dir, thr_img=0.5, thr_pat=0.5):
         dataframes of model predictions on image level and patient level
     """
     
-    model_dir = os.path.join(out_dir, 'model')
-    pred_dir = os.path.join(out_dir, 'pred')
-    os.mkdir(model_dir) if not os.path.isdir(model_dir) else None
-    os.mkdir(pred_dir) if not os.path.isdir(pred_dir) else None
 
-    if body_part == 'head_and_neck':
-        saved_model = 'EffNet_2021_08_24_09_57_13'
-    elif body_part == 'chest':
-        saved_model = 'Tuned_EfficientNetB4_2021_08_27_20_26_55'
+    if body_part == 'HeadNeck':
+        saved_model = 'EffNet_HeadNeck'
+    elif body_part == 'Chest':
+        saved_model = 'EffNet_Chest'
 
     ## load saved model
-    print(saved_model)
+    print(str(saved_model))
     model = load_model(os.path.join(model_dir, saved_model))
     ## prediction
     y_pred = model.predict(img_arr, batch_size=32)

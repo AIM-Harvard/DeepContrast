@@ -21,7 +21,7 @@ from get_data.get_img_dataset import img_dataset
 
 
 
-def data_prepro(body_part, out_dir, reg_temp_img, new_spacing=[1, 1, 3], 
+def data_prepro(body_part, data_dir, reg_temp_img, new_spacing=[1, 1, 3], 
                 input_channel=3, norm_type='np_clip'):
    
     """
@@ -45,8 +45,6 @@ def data_prepro(body_part, out_dir, reg_temp_img, new_spacing=[1, 1, 3],
         
     """
     
-    data_dir = os.path.join(out_dir, 'pred_data')
-    os.mkdir(data_dir) if not os.path.isdir(data_dir) else None
     reg_template = os.path.join(data_dir, reg_temp_img)
 
     if body_part == 'head_and_neck':
