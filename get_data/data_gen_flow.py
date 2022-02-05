@@ -83,8 +83,6 @@ def train_generator(proj_dir, batch_size, input_channel=3):
     return train_gen
 
 
-
-    
 def val_generator(proj_dir, batch_size, input_channel=3):
 
     """
