@@ -61,7 +61,7 @@ def model_pred(body_part, model_dir, out_dir, df_img, img_arr, thr_img=0.5, thr_
     df_img['y_pred'] = np.around(y_pred, 3)
     df_img['y_pred_class'] = y_pred_class
     df_img_pred = df_img[['pat_id', 'img_id', 'y_pred', 'y_pred_class']] 
-    fn = 'image_prediction' + '.csv'
+    fn = str(body_part) + '_image_prediction' + '.csv'
     df_img_pred.to_csv(os.path.join(out_dir, fn), index=False) 
     
     ## calcualte patient level prediction
@@ -78,7 +78,7 @@ def model_pred(body_part, model_dir, out_dir, df_img, img_arr, thr_img=0.5, thr_
     df_mean['predictions'] = y_pred
     df_mean.drop(['y_pred', 'y_pred_class'], axis=1, inplace=True)
     df_pat_pred = df_mean 
-    fn = 'patient_prediction' + '.csv'
+    fn = str(body_part) + '_patient_prediction' + '.csv'
     df_pat_pred.to_csv(os.path.join(out_dir, fn))
     print('patient level pred:\n', df_pat_pred)
 

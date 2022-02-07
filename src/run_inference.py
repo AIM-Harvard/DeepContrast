@@ -28,7 +28,7 @@ if __name__ == '__main__':
     """    
     
 
-    body_part = 'Chest'
+    body_part = 'HeadNeck'
     
     proj_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
     model_dir = os.path.join(proj_dir, 'models')
