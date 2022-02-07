@@ -56,11 +56,11 @@ deactivate
 The get data step takes care of the following operations:
 
 1. Run the code (`run_inference.py`) under the root path of "src" for model inference on sample data;
-2. Specify "HeadNeck" or "Chest" in the code (`run_inference.py`) to predict sample data from head and neck CT scanor chest CT scan;
+2. Specify "HeadNeck" or "Chest" in the code (`run_inference.py`) to predict sample data from head and neck CT scan  or chest CT scan;
 3. Data preprocessing for either head and neck or chest CT scans including respacing, registration and cropping (`data_prepro.py`);
 4. Predict IV contrast for head and neck or chest CT scans and save results to csv file (`model_pred.py`);
 
-The get data step can be run by executing:
+The model inference can be run by executing:
 
 ```
 python run_prediction.py
