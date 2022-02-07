@@ -21,7 +21,7 @@ from get_data.get_img_dataset import img_dataset
 
 
 
-def data_prepro(body_part, data_dir, reg_temp_img, new_spacing=[1, 1, 3], 
+def data_prepro(body_part, data_dir, new_spacing=[1, 1, 3], 
                 input_channel=3, norm_type='np_clip'):
    
     """
@@ -45,15 +45,19 @@ def data_prepro(body_part, data_dir, reg_temp_img, new_spacing=[1, 1, 3],
         
     """
     
-    reg_template = os.path.join(data_dir, reg_temp_img)
 
-    if body_part == 'head_and_neck':
+    if body_part == 'HeadNeck':
         crop_shape = [192, 192, 100]
         slice_range = range(17, 83)
-    elif body_part == 'chest':
+        data_dir = os.path.join(data_dir, 'HeadNeck')
+    elif body_part == 'Chest':
         crop_shape = [192, 192, 140]
         slice_range = range(50, 120)
+        data_dir = os.path.join(data_dir, 'Chest')
     
+    # choose first scan as registration template
+    reg_template = sorted(glob.glob(data_dir + '/*nrrd'))[0]
+
     # registration, respacing, cropping   
     img_ids = []
     pat_ids = []

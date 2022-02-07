@@ -44,12 +44,12 @@ def model_pred(body_part, model_dir, out_dir, df_img, img_arr, thr_img=0.5, thr_
     
 
     if body_part == 'HeadNeck':
-        saved_model = 'EffNet_HeadNeck'
+        saved_model = 'EffNet_HeadNeck.h5'
     elif body_part == 'Chest':
-        saved_model = 'EffNet_Chest'
+        saved_model = 'EffNet_Chest.h5'
 
     ## load saved model
-    print(str(saved_model))
+    #print(str(saved_model))
     model = load_model(os.path.join(model_dir, saved_model))
     ## prediction
     y_pred = model.predict(img_arr, batch_size=32)
@@ -61,12 +61,12 @@ def model_pred(body_part, model_dir, out_dir, df_img, img_arr, thr_img=0.5, thr_
     df_img['y_pred'] = np.around(y_pred, 3)
     df_img['y_pred_class'] = y_pred_class
     df_img_pred = df_img[['pat_id', 'img_id', 'y_pred', 'y_pred_class']] 
-    fn = 'df_img_pred' + '_' + str(saved_model) + '.csv'
+    fn = 'image_prediction' + '.csv'
     df_img_pred.to_csv(os.path.join(out_dir, fn), index=False) 
     
     ## calcualte patient level prediction
     df_img_pred.drop(['img_id'], axis=1, inplace=True)
-    df_mean = df_img_pred.groupby(['pat_id']).mean()
+    df_mean = df_img_pred.groupby(['pat_id']).mean().reset_index()
     preds = df_mean['y_pred']
     y_pred = []
     for pred in preds:
@@ -78,9 +78,8 @@ def model_pred(body_part, model_dir, out_dir, df_img, img_arr, thr_img=0.5, thr_
     df_mean['predictions'] = y_pred
     df_mean.drop(['y_pred', 'y_pred_class'], axis=1, inplace=True)
     df_pat_pred = df_mean 
-    fn = 'df_pat_pred' + '_' + str(saved_model) + '.csv'
+    fn = 'patient_prediction' + '.csv'
     df_pat_pred.to_csv(os.path.join(out_dir, fn))
-    print('image level pred:\n', df_img_pred)
     print('patient level pred:\n', df_pat_pred)
 
 

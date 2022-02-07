@@ -68,15 +68,15 @@ def crop_image(nrrd_file, patient_id, crop_shape, return_type, save_dir):
             startx:startx + crop_shape[0]
             ]
     if img_crop_arr.shape[0] < crop_shape[2]:
-        print('initial cropped image shape too small:', img_arr.shape)
-        print(crop_shape[2], img_crop_arr.shape[0])
+        #print('initial cropped image shape too small:', img_arr.shape)
+        #print(crop_shape[2], img_crop_arr.shape[0])
         img_crop_arr = np.pad(
             img_crop_arr,
             ((int(crop_shape[2] - img_crop_arr.shape[0]), 0), (0, 0), (0, 0)),
             'constant',
             constant_values=-1024
             )
-        print("padded size: ", img_crop_arr.shape)
+        #print("padded size: ", img_crop_arr.shape)
     #print(img_crop_arr.shape)    
     ## get nrrd from numpy array
     img_crop_nrrd = sitk.GetImageFromArray(img_crop_arr)
