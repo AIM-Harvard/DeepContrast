@@ -50,17 +50,13 @@ The virtual environment can be deactivated by running:
 ```
 deactivate
 ```
-## Acknowledgements
 
-Code development: ZY
-Code testing, refactoring and documentation: ZY
-
-## Model Prediction
+## Model Inference
 
 The get data step takes care of the following operations:
 
-1. Sample data (head and neck CT and chest CT) can be found from foler "datasets";
-2. Trained models based on EfficientNetB4 for head and neck CT ("EffNet_HeadNeck.h5") and chest CT ("EffNet_Chest.h5") can be found from foler "models";
+1. Run the code (`run_inference.py`) under the root path of "src" for model inference on sample data;
+2. Specify "HeadNeck" or "Chest" in the code (`run_inference.py`) to predict sample data from head and neck CT scanor chest CT scan;
 3. Data preprocessing for either head and neck or chest CT scans including respacing, registration and cropping (`data_prepro.py`);
 4. Predict IV contrast for head and neck or chest CT scans and save results to csv file (`model_pred.py`);
 
@@ -126,6 +122,10 @@ The external validation step can be run by executing:
 python run_step4_exval.py
 ```
 
+## Acknowledgements
+
+Code development: ZY
+Code testing, refactoring and documentation: ZY
 
 ## Disclaimer
 
