@@ -10,6 +10,11 @@ All the source code to run the deep-learning-based pipeline is found under the s
 Four sample subjects' CT data and the associated data label, as well as all the models weights necessary to run the pipeline, are stored under the data folder.
 Additional details on the content of the subdirectories and their structure can be found in the markdown files stored in the former.
 
+## Requirements
+
+* Python 3.8
+* TensorFlow 2.4
+
 ## Set-up
 
 This code was developed and tested using Python 3.8.5.
