@@ -22,7 +22,7 @@ from sklearn.metrics import confusion_matrix
 
 
 
-def model_pred(body_part, model_dir, out_dir, df_img, img_arr, thr_img=0.5, thr_pat=0.5):    
+def model_pred(body_part, save_csv, model_dir, out_dir, df_img, img_arr, thr_img=0.5, thr_pat=0.5):    
 
     """
     model prediction for IV contrast
@@ -54,16 +54,16 @@ def model_pred(body_part, model_dir, out_dir, df_img, img_arr, thr_img=0.5, thr_
     ## prediction
     y_pred = model.predict(img_arr, batch_size=32)
     y_pred_class = [1 * (x[0] >= thr_img) for x in y_pred]
-    #print(y_pred)
-    #print(y_pred_class)
 
     ## save a dataframe for prediction on image level
     df_img['y_pred'] = np.around(y_pred, 3)
     df_img['y_pred_class'] = y_pred_class
     df_img_pred = df_img[['pat_id', 'img_id', 'y_pred', 'y_pred_class']] 
-    fn = str(body_part) + '_image_prediction' + '.csv'
-    df_img_pred.to_csv(os.path.join(out_dir, fn), index=False) 
-    
+    if save_csv:
+        fn = 'image_prediction' + '.csv'
+        df_img_pred.to_csv(os.path.join(out_dir, fn), index=False) 
+        print('Saved image prediction!')
+
     ## calcualte patient level prediction
     df_img_pred.drop(['img_id'], axis=1, inplace=True)
     df_mean = df_img_pred.groupby(['pat_id']).mean().reset_index()
@@ -78,9 +78,11 @@ def model_pred(body_part, model_dir, out_dir, df_img, img_arr, thr_img=0.5, thr_
     df_mean['predictions'] = y_pred
     df_mean.drop(['y_pred', 'y_pred_class'], axis=1, inplace=True)
     df_pat_pred = df_mean 
-    fn = str(body_part) + '_patient_prediction' + '.csv'
-    df_pat_pred.to_csv(os.path.join(out_dir, fn))
     print('patient level pred:\n', df_pat_pred)
+    if save_csv:
+        fn = 'patient_prediction' + '.csv'
+        df_pat_pred.to_csv(os.path.join(out_dir, fn))
+        print('Saved patient prediction!')
 
 
     
