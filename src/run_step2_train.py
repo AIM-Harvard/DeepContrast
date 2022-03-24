@@ -27,7 +27,7 @@ from go_model.train_model import callbacks
 
 if __name__ == '__main__':
 
-    proj_dir = '/mnt/aertslab/USERS/Zezhong/contrast_detection/GitHub_Test'
+    proj_dir = 'root path'
     label_dir = os.path.join(proj_dir, 'HeadNeck/label')
     out_dir = os.path.join(proj_dir, 'HeadNeck/output')
     pro_data_dir = os.path.join(proj_dir, 'HeadNeck/pro_data')

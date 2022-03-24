@@ -18,7 +18,7 @@ from train_data.preprocess_data import preprocess_data
 
 if __name__ == '__main__':
 
-    proj_dir = '/mnt/aertslab/USERS/Zezhong/contrast_detection/GitHub_Test'
+    proj_dir = 'root path'
     data_dir = os.path.join(proj_dir, 'HeadNeck/raw_image')
     pre_data_dir = os.path.join(proj_dir, 'HeadNeck/pre_image')
     label_dir = os.path.join(proj_dir, 'HeadNeck/label')

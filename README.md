@@ -75,19 +75,20 @@ python run_prediction.py Chest
 ### Step 1: Get Data
 
 Download videos and train/test splits [here](https://drive.google.com/drive/folders/1xXU3GoM4_5CnzPB_8eD3Zjmk6Ye1y7ad?usp=sharing).
+
 Assume the structure of data directories is the following:
 ```misc
 ~/
   HeadNeck/
     raw_image/
-      nrrd
+      nrrd files
     labels/
-      csv
+      csv file
   Chest/
     raw_image/
-      nrrd
+      nrrd files
     labels/
-      csv
+      csv file
 ```
 The get data step takes care of the following operations:
 1. Data preprocessing for head and neck CT scan including respacing, registration and cropping (`preprocess_data.py`);
@@ -127,17 +128,17 @@ The test step can be run by executing:
 python run_step3_test.py
 ```
 
-### Step 4: External Validation
+### Step 4: Finetune Model for Chest CT Data
 
-1. Preprocess chest CT data and prepare data for the CNN model input (`exval_dataset.py`);
-2. Fine tune previsouly trained model with chest CT data (`finetune_model.py`);
+1. Preprocess chest CT data and prepare data for the CNN model input (`tune_dataset.py`);
+2. Fine tune previsouly trained model with chest CT data (`tune_model.py`);
 3. Evaluate fine-tuned model with internal validation dataset (chest CT) and external test dataset (chest CT) (`evaluate_model.py`);
 4. Generate statistcal results (accuracy, ROC-AUC, sensitivity, specificity, F1-score) and plots (confusion matrix, ROC curve, precision-recall curve) ('get_stats_plots.py);
 
 The external validation step can be run by executing:
 
 ```
-python run_step4_exval.py
+python run_step4_tune.py
 ```
 
 ## Acknowledgements

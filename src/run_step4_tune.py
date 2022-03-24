@@ -23,7 +23,7 @@ from train_data.tune_dataset import tune_img_dataset
   
 if __name__ == '__main__':
 
-    proj_dir = '/mnt/aertslab/USERS/Zezhong/contrast_detection/GitHub_Test'  
+    proj_dir = 'root path'  
     data_dir = os.path.join(proj_dir, 'Chest/raw_image')
     pre_data_dir = os.path.join(proj_dir, 'Chest/pre_image')
     label_dir = os.path.join(proj_dir, 'Chest/label')

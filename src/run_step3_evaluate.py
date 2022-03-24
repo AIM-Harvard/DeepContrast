@@ -21,7 +21,7 @@ from statistics.get_stats_plots import get_stats_plots
 if __name__ == '__main__':
 
     
-    proj_dir = '/mnt/aertslab/USERS/Zezhong/contrast_detection/GitHub_Test'
+    proj_dir = 'root path'
     out_dir = os.path.join(proj_dir, 'HeadNeck/output')
     pro_data_dir = os.path.join(proj_dir, 'HeadNeck/pro_data')
     model_dir = os.path.join(proj_dir, 'HeadNeck/model')
