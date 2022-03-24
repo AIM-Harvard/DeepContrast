@@ -2,6 +2,20 @@
 
 Fully automatic deep learning system to detect IV Contrast in CT scans.
 
+## Implemented models
+
+ - Simple CNN
+ - InceptionV3
+ - ResNet101v2
+ - Transfer Learning based on ResNet101v2
+ - EfficientNetB4
+
+## Results
+
+<p align="center"><img src="https://github.com/AIM-Harvard/DeepContrast/src/utils/Table1.png" align="middle" width="900" title="Results of Efficient 3DCNNs" /></p>
+
+<p align="center"><img src="https://github.com/AIM-Harvard/DeepContrast/src/utils/Table2.png" align="middle" width="900" title="Results of Efficient 3DCNNs" /></p>
+
 ## Repository Structure
 
 The DeepContrast repository is structured as follows:
