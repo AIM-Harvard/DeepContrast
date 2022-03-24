@@ -63,12 +63,12 @@ The get data step takes care of the following operations:
 The model inference can be run by executing:
 
 ```
-python run_prediction.py HeadNeck
+python run_inference.py --HeadNeck
 ```
 or
 
 ```
-python run_prediction.py Chest
+python run_inference.py --Chest
 ```
 ## Model Development and Test
 

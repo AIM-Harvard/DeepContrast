@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        'body_part',
+        '--body_part',
         type = str,
         choices = ['HeadNeck', 'Chest'],
         help = 'Specify the body part ("HeadNeck" or "Chest") to run inference.'
