@@ -1,6 +1,6 @@
 # DeepContrast
 
-PyTorch Implementation of the article "[Deep learning-based detection of intravenous contrast in computed tomography scans](https://arxiv.org/pdf/2110.08424.pdf)", codes and pretrained models.
+Keras Implementation of the article "[Deep learning-based detection of intravenous contrast in computed tomography scans](https://arxiv.org/pdf/2110.08424.pdf)", codes and pretrained models.
 
 ## Implemented models
 
@@ -155,8 +155,7 @@ python run_step4_tune.py
 
 ## Acknowledgements
 
-Code development: ZY
-Code testing, refactoring and documentation: ZY
+Code development, testing, refactoring and documentation: ZY, BHK.
 
 ## Disclaimer
 
