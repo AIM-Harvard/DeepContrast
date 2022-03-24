@@ -82,12 +82,12 @@ Assume the structure of data directories is the following:
   HeadNeck/
     raw_image/
       nrrd files
-    labels/
+    label/
       csv file
   Chest/
     raw_image/
       nrrd files
-    labels/
+    label/
       csv file
 ```
 The get data step takes care of the following operations:
