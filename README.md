@@ -161,7 +161,7 @@ Please cite the following article if you use this code or pre-trained models:
 @misc{https://doi.org/10.48550/arxiv.2110.08424,
   doi = {10.48550/ARXIV.2110.08424},
   url = {https://arxiv.org/abs/2110.08424}, 
-  author = {Ye, Zezhong and Qian, Jack M. and Hosny, Ahmed and Zeleznik, Roman and Plana, Deborah and Likitlersuang, Jirapat and Zhang, Zhongyi and Mak, Raymond H. and Aerts, Hugo J. W. L. and Kann, Benjamin H.},
+  author = {Ye Z, Qian JM, Hosny A, Zeleznik R, Plana D, Likitlersuang J, Zhang Z, Mak RH, Aerts HJWL, and Kann BH},
   title = {Deep learning-based detection of intravenous contrast in computed tomography scans},
   publisher = {arXiv},
   year = {2021}, 
