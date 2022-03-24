@@ -1,6 +1,6 @@
 # DeepContrast
 
-Fully automatic deep learning system to detect IV Contrast in CT scans.
+PyTorch Implementation of the article "[Deep learning-based detection of intravenous contrast in computed tomography scans](https://arxiv.org/pdf/2110.08424.pdf)", codes and pretrained models.
 
 ## Implemented models
 
