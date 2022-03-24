@@ -12,7 +12,7 @@ Fully automatic deep learning system to detect IV Contrast in CT scans.
 
 ## Results
 
-<p align="center"><img src="https://github.com/AIM-Harvard/DeepContrast/blob/main/src/utils/Table.png" align="middle" width="900" title="Results of Head and Neck CT scans" /></p>
+<p align="center"><img src="https://github.com/AIM-Harvard/DeepContrast/blob/main/src/utils/Table.png" align="middle" width="800" title="Results of Head and Neck CT scans" /></p>
 
 ## Repository Structure
 
