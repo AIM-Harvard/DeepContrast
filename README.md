@@ -105,7 +105,7 @@ python run_step1_data.py
 
 The train step takes care of the following operations:
 
-1. Create data generators, including augmentation for training and validation dataset (`data_gen_flow.py`);
+1. Create data generators, including augmentation for training and validation dataset (`data_generator.py`);
 2. Generate desired CNN models, including simple CNN model, EfficientNetB4 model, ResNet101V2 model, Inception3 model, and Transfer Learning model (`get_model.py`);
 3. Train model and save training results and hyperparaters to txt file (`train_model.py`);
 
@@ -120,7 +120,7 @@ python run_step2_train.py
 The test step takes care of the following operations:
 
 1. Evaluate model performance on internal validation dataset (head and neck CT) and external test dataset (head and neck CT) (`evaluate_model.py`);
-2. Generate statistcal results (accuracy, ROC-AUC, sensitivity, specificity, F1-score) and plots (confusion matrix, ROC curve, precision-recall curve) ('get_stats_plots.py);
+2. Generate statistcal results (accuracy, ROC-AUC, sensitivity, specificity, F1-score) and plots (confusion matrix, ROC curve, precision-recall curve) (`get_stats_plots.py`);
 
 The test step can be run by executing:
 
@@ -133,7 +133,7 @@ python run_step3_test.py
 1. Preprocess chest CT data and prepare data for the CNN model input (`tune_dataset.py`);
 2. Fine tune previsouly trained model with chest CT data (`tune_model.py`);
 3. Evaluate fine-tuned model with internal validation dataset (chest CT) and external test dataset (chest CT) (`evaluate_model.py`);
-4. Generate statistcal results (accuracy, ROC-AUC, sensitivity, specificity, F1-score) and plots (confusion matrix, ROC curve, precision-recall curve) ('get_stats_plots.py);
+4. Generate statistcal results (accuracy, ROC-AUC, sensitivity, specificity, F1-score) and plots (confusion matrix, ROC curve, precision-recall curve) (`get_stats_plots.py`);
 
 The external validation step can be run by executing:
 
