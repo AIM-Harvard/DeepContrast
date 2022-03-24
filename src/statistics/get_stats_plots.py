@@ -5,15 +5,15 @@ import pickle
 from time import gmtime, strftime
 from datetime import datetime
 import timeit
-from utils.cm_all import cm_all
-from utils.roc_all import roc_all
-from utils.prc_all import prc_all
+from statistics.cm_all import cm_all
+from statistics.roc_all import roc_all
+from statistics.prc_all import prc_all
 #from utils.acc_loss import acc_loss
-from utils.write_txt import write_txt
+from statistics.write_txt import write_txt
 
 
 
-def get_stats_plots(out_dir, proj_dir, run_type, run_model, loss, acc, 
+def get_stats_plots(pro_data_dir, proj_dir, run_type, run_model, loss, acc, 
                     saved_model, epoch, batch_size, lr, thr_img=0.5, 
                     thr_prob=0.5, thr_pos=0.5, bootstrap=1000):
 
@@ -42,24 +42,20 @@ def get_stats_plots(out_dir, proj_dir, run_type, run_model, loss, acc,
     
     """
     
-    pro_data_dir = os.path.join(proj_dir, 'pro_data')
-    train_dir = os.path.join(out_dir, 'train')
-    val_dir = os.path.join(out_dir, 'val')
-    test_dir = os.path.join(out_dir, 'test')
-    exval1_dir = os.path.join(out_dir, 'exval1')
-    exval2_dir = os.path.join(out_dir, 'exval2')
+    train_dir = os.path.join(proj_dir, 'HeadNeck/output/train')
+    val_dir = os.path.join(proj_dir, 'HeadNeck/output/val')
+    test_dir = os.path.join(proj_dir, 'HeadNeck/output/test')
+    tune_dir = os.path.join(proj_dir, 'Chest/output/tune')
 
     if not os.path.exists(train_dir):
-        os.mkdir(train_dir)
+        os.makedirs(train_dir)
     if not os.path.exists(val_dir):
-        os.mkdir(val_dir)
+        os.makedirs(val_dir)
     if not os.path.exists(test_dir):
-        os.mkdir(test_dir)
-    if not os.path.exists(exval1_dir):
-        os.mkdir(exval1_dir)
-    if not os.path.exists(exval2_dir):
-        os.mkdir(exval2_dir)
-    
+        os.makedirs(test_dir)
+    if not os.path.exists(tune_dir):
+        os.makedirs(tune_dir)
+
     ### determine if this is train or test
     if run_type == 'val':
         fn_df_pred = 'val_img_pred.csv'
@@ -67,12 +63,9 @@ def get_stats_plots(out_dir, proj_dir, run_type, run_model, loss, acc,
     elif run_type == 'test':
         fn_df_pred = 'test_img_pred.csv'
         save_dir = test_dir
-    elif run_type == 'exval1':
-        fn_df_pred = 'exval1_img_pred.csv'
-        save_dir = exval1_dir
-    elif run_type == 'exval2':
-        fn_df_pred = 'exval2_img_pred.csv'
-        save_dir = exval2_dir
+    elif run_type == 'tune':
+        fn_df_pred = 'test_img_pred.csv'
+        save_dir = tune_dir
 
     cms = []
     cm_norms = []

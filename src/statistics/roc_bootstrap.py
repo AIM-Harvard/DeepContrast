@@ -1,17 +1,27 @@
-#--------------------------------------------
-# calculate auc, tpr, tnr with n bootstrap
-#-------------------------------------------
-
 import os
 import numpy as np
 import pandas as pd
 import glob
 from sklearn.utils import resample
 import scipy.stats as ss
-from utils.mean_CI import mean_CI
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import auc
 from sklearn.metrics import roc_curve
+
+
+def mean_CI(data):
+
+    mean = np.mean(np.array(data))
+    CI = ss.t.interval(
+        alpha=0.95,
+        df=len(data)-1,
+        loc=np.mean(data),
+        scale=ss.sem(data)
+        )
+    lower = CI[0]
+    upper = CI[1]
+
+    return mean, lower, upper
 
 
 def roc_bootstrap(bootstrap, y_true, y_pred):

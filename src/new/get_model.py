@@ -37,7 +37,7 @@ def get_model(out_dir, run_model, activation, input_shape=(192, 192, 3),
 
     train_dir = os.path.join(out_dir, 'train')
     if not os.path.exists(train_dir):
-        os.mkdir(train_dir)
+        os.path.mkdir(train_dir)
 
     if run_model == 'cnn':
         my_model = simple_cnn(

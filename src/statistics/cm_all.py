@@ -1,7 +1,3 @@
-#----------------------------------------------------------------------
-# Deep learning for classification for contrast CT;
-# Transfer learning using Google Inception V3;
-#-----------------------------------------------------------------------------------------
 import os
 import numpy as np
 import pandas as pd
@@ -15,11 +11,10 @@ from sklearn.model_selection import train_test_split, GroupShuffleSplit
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import roc_curve, auc, precision_recall_curve
-from utils.plot_cm import plot_cm
+from statistics.plot_cm import plot_cm
 
-# ----------------------------------------------------------------------------------
-# plot ROI
-# ----------------------------------------------------------------------------------
+
+
 def cm_all(run_type, level, thr_img, thr_prob, thr_pos, pro_data_dir, save_dir, fn_df_pred):
     
     df_sum = pd.read_csv(os.path.join(pro_data_dir, fn_df_pred))

@@ -8,7 +8,7 @@ from time import localtime, strftime
 
 
 
-def write_txt(run_type, out_dir, loss, acc, cms, cm_norms, reports, prc_aucs, 
+def write_txt(run_type, proj_dir, loss, acc, cms, cm_norms, reports, prc_aucs, 
               roc_stats, run_model, saved_model, epoch, batch_size, lr): 
 
     """
@@ -31,22 +31,19 @@ def write_txt(run_type, out_dir, loss, acc, cms, cm_norms, reports, prc_aucs,
     
     """
 
-    train_dir = os.path.join(out_dir, 'train')
-    val_dir = os.path.join(out_dir, 'val')
-    test_dir = os.path.join(out_dir, 'test')
-    exval1_dir = os.path.join(out_dir, 'exval1')
-    exval2_dir = os.path.join(out_dir, 'exval2')
+    train_dir = os.path.join(proj_dir, 'HeadNeck/output/train')
+    val_dir = os.path.join(out_dir, 'HeadNeck/output/val')
+    test_dir = os.path.join(out_dir, 'HeadNeck/output/test')
+    tune_dir = os.path.join(out_dir, 'Chest/output/tune')
 
     if not os.path.exists(train_dir):
-        os.mkdir(train_dir)
+        os.makedirs(train_dir)
     if not os.path.exists(val_dir):
-        os.mkdir(val_dir)
+        os.makedirs(val_dir)
     if not os.path.exists(test_dir):
-        os.mkdir(test_dir)
-    if not os.path.exists(exval1_dir):
-        os.mkdir(exval1_dir)
-    if not os.path.exists(exval2_dir):
-        os.mkdir(exval2_dir)
+        os.makedirs(test_dir)
+    if not os.path.exists(tune_dir):
+        os.makedirs(tune_dir)
 
     if run_type == 'train':
         log_fn = 'train_logs.text'
@@ -72,12 +69,9 @@ def write_txt(run_type, out_dir, loss, acc, cms, cm_norms, reports, prc_aucs,
         elif run_type == 'test':
             log_fn = 'test_logs.text'
             save_dir = test_dir
-        elif run_type == 'exval1':
-            log_fn = 'exval1_logs.text'
-            save_dir = exval1_dir
-        elif run_type == 'exval2':
-            log_fn = 'exval2_logs.text'
-            save_dir = exval2_dir
+        elif run_type == 'tune':
+            log_fn = 'tune_logs.text'
+            save_dir = tune_dir
         
         write_path = os.path.join(save_dir, log_fn)
         with open(write_path, 'a') as f:

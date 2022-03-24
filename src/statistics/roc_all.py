@@ -2,15 +2,10 @@ import os
 import numpy as np
 import pandas as pd
 import pickle
-from utils.mean_CI import mean_CI
-from utils.plot_roc import plot_roc
-from utils.roc_bootstrap import roc_bootstrap
+from statistics.mean_CI import mean_CI
+from statistics.plot_roc import plot_roc
+from statistics.roc_bootstrap import roc_bootstrap
 
-
-
-# ----------------------------------------------------------------------------------
-# plot ROI
-# ----------------------------------------------------------------------------------
 
 def roc_all(run_type, level, thr_prob, thr_pos, bootstrap, color, pro_data_dir, save_dir,
             fn_df_pred):

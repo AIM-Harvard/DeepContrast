@@ -56,10 +56,14 @@ def evaluate_model(run_type, model_dir, pro_data_dir, saved_model,
         fn_data = 'test_arr_3ch.npy'
         fn_label = 'test_img_df.csv'
         fn_pred = 'test_img_pred.csv'
-    elif run_type == 'tune':
-        fn_data = 'test_arr.npy'
-        fn_label = 'test_img_df.csv'
-        fn_pred = 'test_img_pred.csv'
+    elif run_type == 'exval1':
+        fn_data = 'exval1_arr2.npy'
+        fn_label = 'exval1_img_df2.csv'
+        fn_pred = 'exval1_img_pred.csv'
+    elif run_type == 'exval2':
+        fn_data = 'rtog_0617_arr.npy'
+        fn_label = 'rtog_img_df.csv'
+        fn_pred = 'exval2_img_pred.csv'
     
     x_data = np.load(os.path.join(pro_data_dir, fn_data))
     df = pd.read_csv(os.path.join(pro_data_dir, fn_label))
@@ -68,7 +72,6 @@ def evaluate_model(run_type, model_dir, pro_data_dir, saved_model,
     ## load saved model and evaluate
     #-------------------------------
     model = load_model(os.path.join(model_dir, saved_model))
-    #model = load_model('/mnt/aertslab/USERS/Zezhong/contrast_detection/GitHub_Test/model/EffNetB4')
     y_pred = model.predict(x_data)
     score = model.evaluate(x_data, y_label)
     loss = np.around(score[0], 3)
@@ -88,9 +91,9 @@ def evaluate_model(run_type, model_dir, pro_data_dir, saved_model,
     #----------------------------------
     ID = []
     for file in df['fn']:
-        if run_type in ['val', 'test', 'tune']:
+        if run_type in ['val', 'test', 'exval1']:
             id = file.split('\\')[-1].split('_')[0].strip()
-        elif run_type == 'tune2':
+        elif run_type == 'exval2':
             id = file.split('\\')[-1].split('_s')[0].strip()
         ID.append(id)
     df['ID'] = ID
