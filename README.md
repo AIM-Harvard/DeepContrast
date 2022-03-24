@@ -74,7 +74,7 @@ python run_prediction.py Chest
 
 ### Step 1: Get Data
 
-Download videos and train/test splits [here](https://drive.google.com/drive/folders/1xXU3GoM4_5CnzPB_8eD3Zjmk6Ye1y7ad?usp=sharing).
+Download head-and-neck and chest sample CT scans and IV contrast labels from [here](https://drive.google.com/drive/folders/1xXU3GoM4_5CnzPB_8eD3Zjmk6Ye1y7ad?usp=sharing).
 
 Assume the structure of data directories is the following:
 ```misc
