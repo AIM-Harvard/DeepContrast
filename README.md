@@ -153,6 +153,22 @@ The external validation step can be run by executing:
 python run_step4_tune.py
 ```
 
+## Citation
+
+Please cite the following article if you use this code or pre-trained models:
+
+```bibtex
+@misc{https://doi.org/10.48550/arxiv.2110.08424,
+  doi = {10.48550/ARXIV.2110.08424},
+  url = {https://arxiv.org/abs/2110.08424}, 
+  author = {Ye, Zezhong and Qian, Jack M. and Hosny, Ahmed and Zeleznik, Roman and Plana, Deborah and Likitlersuang, Jirapat and Zhang, Zhongyi and Mak, Raymond H. and Aerts, Hugo J. W. L. and Kann, Benjamin H.},
+  title = {Deep learning-based detection of intravenous contrast in computed tomography scans},
+  publisher = {arXiv},
+  year = {2021}, 
+  copyright = {Creative Commons Attribution Non Commercial No Derivatives 4.0 International}
+}
+```
+
 ## Acknowledgements
 
 Code development, testing, refactoring and documentation: ZY, BHK.
