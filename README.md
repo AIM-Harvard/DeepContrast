@@ -74,8 +74,22 @@ python run_prediction.py Chest
 
 ### Step 1: Get Data
 
+Download videos and train/test splits [here](https://drive.google.com/drive/folders/1xXU3GoM4_5CnzPB_8eD3Zjmk6Ye1y7ad?usp=sharing).
+Assume the structure of data directories is the following:
+```misc
+~/
+  HeadNeck/
+    raw_image/
+      nrrd
+    labels/
+      csv
+  Chest/
+    raw_image/
+      nrrd
+    labels/
+      csv
+```
 The get data step takes care of the following operations:
-
 1. Data preprocessing for head and neck CT scan including respacing, registration and cropping (`preprocess_data.py`);
 2. Create dataframe to contain data paths, patient IDs and labels on the
     patient level (`get_pat_dataset.py`);
