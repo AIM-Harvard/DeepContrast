@@ -13,7 +13,8 @@ import argparse
 import pydot
 import pydotplus
 import graphviz
-#from pydotplus import graphviz
+import random
+import tensorflow as tf
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.losses import BinaryCrossentropy
@@ -23,64 +24,72 @@ from go_model.data_generator import val_generator
 from go_model.get_model import get_model
 from go_model.train_model import train_model
 from go_model.train_model import callbacks
+from opts import parse_opts
+
 
 
 if __name__ == '__main__':
 
-    proj_dir = 'root path'
-    label_dir = os.path.join(proj_dir, 'HeadNeck/label')
-    out_dir = os.path.join(proj_dir, 'HeadNeck/output')
-    pro_data_dir = os.path.join(proj_dir, 'HeadNeck/pro_data')
-    log_dir = os.path.join(proj_dir, 'HeadNeck/log')
-    model_dir = os.path.join(proj_dir, 'HeadNeck/model')
-    if not os.path.exists(model_dir):
-        os.makedirs(model_dir)
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)i
-    
-    batch_size = 32
-    lr = 1e-5
-    epoch = 1
-    activation = 'sigmoid' #  'softmax' 
-    loss_function = BinaryCrossentropy(from_logits=True)
-    optimizer = Adam(learning_rate=lr)
-    run_model = 'EffNetB4'    
-    
+    opt = parse_opts()
+
+    random.seed(opt.manual_seed)
+    np.random.seed(opt.manual_seed)
+    tf.random.set_seed(opt.manual_seed)
+
+    if opt.root_dir is not None:
+        opt.HN_out_dir = os.path.join(opt.root_dir, opt.HN_out)
+        opt.HN_model_dir = os.path.join(opt.root_dir, opt.HN_model)
+        opt.HN_label_dir = os.path.join(opt.root_dir, opt.HN_label)
+        opt.HN_pro_data_dir = os.path.join(opt.root_dir, opt.HN_pro_data)
+        opt.HN_log_dir = os.path.join(opt.root_dir, opt.HN_log)
+        if not os.path.exists(opt.HN_out_dir):
+            os.makedirs(opt.HN_out_dir)
+        if not os.path.exists(opt.HN_model_dir):
+            os.makedirs(opt.HN_model_dir)
+        if not os.path.exists(opt.HN_label_dir):
+            os.makedirs(opt.HN_label_dir)
+        if not os.path.exists(opt.HN_pro_data_dir):
+            os.makefirs(opt.HN_pro_data_dir)
+        if not os.path.exists(opt.HN_log_dir):
+            os.makedirs(opt.HN_log_dir)
+
+    print('\n--- STEP 2 - TRAIN MODEL ---\n')
+
     # data generator for train and val data
     train_gen = train_generator(
-        pro_data_dir=pro_data_dir,
-        batch_size=batch_size,
-        )
-
+        pro_data_dir=opt.HN_pro_data_dir,
+        batch_size=opt.batch_size)
     x_val, y_val, val_gen = val_generator(
-        pro_data_dir=pro_data_dir,
-        batch_size=batch_size,
-        )
+        pro_data_dir=opt.HN_pro_data_dir,
+        batch_size=opt.batch_size)
 
+    # get CNN model 
     my_model = get_model(
-        out_dir=out_dir,
-        run_model=run_model, 
-        activation=activation, 
-        input_shape=(192, 192, 3),
-        freeze_layer=None, 
-        transfer=False
-        )
+        out_dir=opt.HN_out_dir,
+        run_model=opt.run_model, 
+        activation=opt.activation, 
+        input_shape=opt.input_shape,
+        freeze_layer=opt.freeze_layer, 
+        transfer=opt.transfer)
 
     ### train model
-    train_model(
-        out_dir=out_dir,
-        log_dir=log_dir,
-        model_dir=model_dir,
-        model=my_model,
-        run_model=run_model,
-        train_gen=train_gen,
-        val_gen=val_gen,
-        x_val=x_val,
-        y_val=y_val,
-        batch_size=batch_size,
-        epoch=epoch,
-        optimizer=optimizer,
-        loss_function=loss_function,
-        lr=lr
-        )
+    if not opt.no_train:
+        if opt.optimizer_function == 'adam':
+            optimizer = Adam(learning_rate=opt.lr)
+        train_model(
+            root_dir=opt.root_dir,
+            out_dir=opt.HN_out_dir,
+            log_dir=opt.HN_log_dir,
+            model_dir=opt.HN_model_dir,
+            model=my_model,
+            run_model=opt.run_model,
+            train_gen=train_gen,
+            val_gen=val_gen,
+            x_val=x_val,
+            y_val=y_val,
+            batch_size=opt.batch_size,
+            epoch=opt.epoch,
+            optimizer=optimizer,
+            loss_function=opt.loss_function,
+            lr=opt.lr)
 

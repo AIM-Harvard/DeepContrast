@@ -15,7 +15,7 @@ from statistics.write_txt import write_txt
 
 
 
-def train_model(out_dir, log_dir, model_dir, model, run_model, train_gen, 
+def train_model(root_dir, out_dir, log_dir, model_dir, model, run_model, train_gen, 
                 val_gen, x_val, y_val, batch_size, epoch, optimizer, loss_function, lr): 
 
     """
@@ -84,7 +84,7 @@ def train_model(out_dir, log_dir, model_dir, model, run_model, train_gen,
     ## save validation results to txt file 
     write_txt(
         run_type='train',
-        proj_dir=proj_dir,
+        root_dir=root_dir,
         loss=1,
         acc=1,
         cms=None,

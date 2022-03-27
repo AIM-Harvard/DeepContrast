@@ -13,7 +13,7 @@ from statistics.write_txt import write_txt
 
 
 
-def get_stats_plots(pro_data_dir, proj_dir, run_type, run_model, loss, acc, 
+def get_stats_plots(pro_data_dir, root_dir, run_type, run_model, loss, acc, 
                     saved_model, epoch, batch_size, lr, thr_img=0.5, 
                     thr_prob=0.5, thr_pos=0.5, bootstrap=1000):
 
@@ -42,10 +42,10 @@ def get_stats_plots(pro_data_dir, proj_dir, run_type, run_model, loss, acc,
     
     """
     
-    train_dir = os.path.join(proj_dir, 'HeadNeck/output/train')
-    val_dir = os.path.join(proj_dir, 'HeadNeck/output/val')
-    test_dir = os.path.join(proj_dir, 'HeadNeck/output/test')
-    tune_dir = os.path.join(proj_dir, 'Chest/output/tune')
+    train_dir = os.path.join(root_dir, 'HeadNeck/output/train')
+    val_dir = os.path.join(root_dir, 'HeadNeck/output/val')
+    test_dir = os.path.join(root_dir, 'HeadNeck/output/test')
+    tune_dir = os.path.join(root_dir, 'Chest/output/tune')
 
     if not os.path.exists(train_dir):
         os.makedirs(train_dir)
@@ -121,7 +121,7 @@ def get_stats_plots(pro_data_dir, proj_dir, run_type, run_model, loss, acc,
     ### save validation results to txt
     write_txt(
         run_type=run_type,
-        out_dir=out_dir,
+        root_dir=root_dir,
         loss=loss,
         acc=acc,
         cms=cms,

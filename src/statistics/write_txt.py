@@ -8,7 +8,7 @@ from time import localtime, strftime
 
 
 
-def write_txt(run_type, proj_dir, loss, acc, cms, cm_norms, reports, prc_aucs, 
+def write_txt(run_type, root_dir, loss, acc, cms, cm_norms, reports, prc_aucs, 
               roc_stats, run_model, saved_model, epoch, batch_size, lr): 
 
     """
@@ -31,10 +31,10 @@ def write_txt(run_type, proj_dir, loss, acc, cms, cm_norms, reports, prc_aucs,
     
     """
 
-    train_dir = os.path.join(proj_dir, 'HeadNeck/output/train')
-    val_dir = os.path.join(out_dir, 'HeadNeck/output/val')
-    test_dir = os.path.join(out_dir, 'HeadNeck/output/test')
-    tune_dir = os.path.join(out_dir, 'Chest/output/tune')
+    train_dir = os.path.join(root_dir, 'HeadNeck/out/train')
+    val_dir = os.path.join(root_dir, 'HeadNeck/outval')
+    test_dir = os.path.join(root_dir, 'HeadNeck/out/test')
+    tune_dir = os.path.join(root_dir, 'Chest/out/tune')
 
     if not os.path.exists(train_dir):
         os.makedirs(train_dir)

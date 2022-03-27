@@ -12,7 +12,7 @@ from tensorflow.keras.models import load_model
 
 
 
-def tune_model(model_dir, pro_data_dir, HN_model, batch_size, epoch, 
+def tune_model(HN_model_dir, CH_model_dir, pro_data_dir, HN_model, batch_size, epoch, 
                    freeze_layer, input_channel=3): 
 
     """
@@ -47,7 +47,7 @@ def tune_model(model_dir, pro_data_dir, HN_model, batch_size, epoch,
     print("sucessfully load data!")
 
     ## load saved model
-    model = load_model(os.path.join(model_dir, HN_model))
+    model = load_model(os.path.join(HN_model_dir, HN_model))
     model.summary()
 
     ### freeze specific number of layers
@@ -86,7 +86,7 @@ def tune_model(model_dir, pro_data_dir, HN_model, batch_size, epoch,
 
     #### save final model
     model_fn = 'Tuned' + '_' + str(HN_model)
-    model.save(os.path.join(model_dir, model_fn))
+    model.save(os.path.join(CH_model_dir, model_fn))
     tuned_model = model
     print('fine tuning model complete!!')
     print('saved fine-tuned model as:', model_fn)
