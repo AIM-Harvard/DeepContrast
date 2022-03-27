@@ -1,6 +1,8 @@
 # DeepContrast
 
-Keras Implementation of the article "[Deep learning-based detection of intravenous contrast in computed tomography scans](https://arxiv.org/pdf/2110.08424.pdf)", codes and pretrained models.
+Keras implementation for the article "[Deep learning-based detection of intravenous contrast in computed tomography scans](https://arxiv.org/pdf/2110.08424.pdf)", codes and pretrained models. A deep learning-based fully-automatic intravenous contrast detection tool for head-and-neck and chest CT scans. 
+
+<p align="center"><img src="https://github.com/xmuyzz/DeepContrast/blob/main/src/utils/Figure1.png" align="middle" width="700" title="CT constrast detection platform" /></p>
 
 ## Implemented models
 
@@ -12,7 +14,7 @@ Keras Implementation of the article "[Deep learning-based detection of intraveno
 
 ## Results
 
-<p align="center"><img src="https://github.com/AIM-Harvard/DeepContrast/blob/main/src/utils/Table.png" align="middle" width="750" title="Results of Head and Neck CT scans" /></p>
+<p align="center"><img src="https://github.com/xmuyzz/DeepContrast/blob/main/src/utils/Table.png" align="middle" width="750" title="Results of Head and Neck CT scans" /></p>
 
 ## Repository Structure
 
@@ -158,14 +160,11 @@ python run_step4_tune.py
 Please cite the following article if you use this code or pre-trained models:
 
 ```bibtex
-@misc{https://doi.org/10.48550/arxiv.2110.08424,
-  doi = {10.48550/ARXIV.2110.08424},
-  url = {https://arxiv.org/abs/2110.08424}, 
+@article{ye2021DeepContrast,
+  title = {Deep learning-based detection of intravenous contrast in computed tomography scans}, 
   author = {Ye Z, Qian JM, Hosny A, Zeleznik R, Plana D, Likitlersuang J, Zhang Z, Mak RH, Aerts HJWL, and Kann BH},
-  title = {Deep learning-based detection of intravenous contrast in computed tomography scans},
-  publisher = {arXiv},
+  journal = {arXiv preprint arXiv:2110.08424},
   year = {2021}, 
-  copyright = {Creative Commons Attribution Non Commercial No Derivatives 4.0 International}
 }
 ```
 
