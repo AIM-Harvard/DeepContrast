@@ -1,6 +1,9 @@
-# DeepContrast
+# DeepContrast: Fully-automatic IV Contrast Detection Tool for CT Scans
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a> [![arXiv](https://img.shields.io/badge/arXiv-2111.10480-b31b1b.svg)](https://arxiv.org/abs/2110.08424)
 
-Keras implementation for the article "[Deep learning-based detection of intravenous contrast in computed tomography scans](https://arxiv.org/pdf/2110.08424.pdf)", codes and pretrained models. A deep learning-based fully-automatic intravenous contrast detection tool for head-and-neck and chest CT scans. 
+Keywords: Deep Learning, Convolutional Neural Network, CT, Intravenous Contrast, Head and Neck CT, Chest CT
+
+Keras implementation for the article "[Deep learning-based detection of intravenous contrast in computed tomography scans](https://arxiv.org/pdf/2110.08424.pdf)", codes and pretrained models. 
 
 <p align="center"><img src="https://github.com/xmuyzz/DeepContrast/blob/main/src/utils/Figure1.png" align="middle" width="700" title="CT constrast detection platform" /></p>
 
