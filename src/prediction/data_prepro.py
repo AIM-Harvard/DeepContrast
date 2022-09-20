@@ -1,5 +1,5 @@
 
-vimport glob
+import glob
 import shutil
 import os
 import pandas as pd
@@ -18,7 +18,7 @@ from utils.resize_3d import resize_3d
 from utils.crop_image import crop_image
 from utils.respacing import respacing
 from utils.nrrd_reg import nrrd_reg_rigid_ref
-from get_data.get_img_dataset import img_dataset
+from train_data.get_img_dataset import img_dataset
 
 
 
