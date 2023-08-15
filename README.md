@@ -3,7 +3,7 @@
 
 Keywords: Deep Learning, Convolutional Neural Network, CT, Intravenous Contrast, Head and Neck CT, Chest CT
 
-Keras implementation for the article "[Deep learning-based detection of intravenous contrast in computed tomography scans](https://arxiv.org/pdf/2110.08424.pdf)", codes and pretrained models. 
+Keras implementation for the article "[Deep learning-based detection of intravenous contrast in computed tomography scans](https://pubs.rsna.org/doi/pdf/10.1148/ryai.210285)", codes and pretrained models. 
 
 <p align="center"><img src="https://github.com/xmuyzz/DeepContrast/blob/main/src/utils/Figure1.png" align="middle" width="700" title="CT constrast detection platform" /></p>
 
@@ -166,7 +166,7 @@ Please cite the following article if you use this code or pre-trained models:
 @article{ye2021DeepContrast,
   title = {Deep learning-based detection of intravenous contrast in computed tomography scans}, 
   author = {Ye Z, Qian JM, Hosny A, Zeleznik R, Plana D, Likitlersuang J, Zhang Z, Mak RH, Aerts HJWL, and Kann BH},
-  journal = {arXiv preprint arXiv:2110.08424},
+  journal = {Radiology: Artificial Intelligence 4 (3), e210285},
   year = {2021}, 
 }
 ```
